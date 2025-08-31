@@ -1,0 +1,8 @@
+.panel { @apply bg-white rounded-2xl shadow-card p-5 border; }
+.card { @apply bg-white rounded-2xl shadow-card p-5 border hover:shadow transition; }
+.btn-primary { @apply px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 shadow; }
+.btn-outline { @apply px-4 py-2 rounded-xl border bg-white hover:bg-gray-50; }
+.input { @apply w-full px-4 py-2 rounded-xl border bg-white focus:ring-2 focus:ring-blue-200; }
+.menu { @apply bg-white rounded-2xl shadow-card border p-4; }
+.menu-title { @apply text-sm font-semibold text-gray-700 mb-2; }
+.menu-list { @apply text-sm text-gray-600 space-y-1; }

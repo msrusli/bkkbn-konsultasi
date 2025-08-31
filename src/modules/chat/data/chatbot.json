@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Bagaimana cara menjaga keamanan informasi?",
+    "answer": "Gunakan kata sandi yang kuat, aktifkan MFA, dan jangan membagikan kredensial ke siapapun."
+  },
+  {
+    "question": "Apa saja yang harus saya lakukan saat pertama kali masuk platform?",
+    "answer": "Lengkapi profil, baca panduan singkat, dan coba fitur konsultasi untuk mengenal sistem."
+  },
+  {
+    "question": "Saya lupa kata sandi, apa yang harus dilakukan?",
+    "answer": "Gunakan fitur Lupa Kata Sandi di halaman masuk, lalu ikuti instruksi email untuk reset."
+  },
+  {
+    "question": "Bagaimana menghubungi dukungan teknis?",
+    "answer": "Kirim tiket melalui menu Bantuan atau email ke support@contoh.go.id dengan deskripsi masalah."
+  },
+  {
+    "question": "Apakah data saya aman?",
+    "answer": "Kami menerapkan enkripsi saat transit & saat tersimpan, audit akses, dan pemantauan berkala."
+  }
+]
