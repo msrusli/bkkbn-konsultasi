@@ -230,18 +230,15 @@ export default function Chatbot(): JSX.Element {
 
   return (
     <div className="bg-gray-100 font-sans text-gray-800 min-h-screen flex items-start justify-center p-0">
-      <div className="w-full max-w-12xl flex ">
+      <div className="w-full max-w-12xl flex h-screen">
         {/* Sidebar */}
-        <aside className="w-64 bg-[#0b63b7] text-white shadow-lg p-6 flex flex-col justify-between ">
+        <aside
+          className="w-80 text-white shadow-lg p-6 flex flex-col justify-between"
+          style={{ backgroundColor: "rgb(59, 147, 193)", opacity: 1 }}
+        >
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-white/20 rounded-md flex items-center justify-center">
-                KB
-              </div>
-              <div>
-                <h4 className="font-semibold">KEMDIKBUD</h4>
-                <p className="text-sm opacity-90">/BKKBN</p>
-              </div>
+            <div className="flex items-center gap-3 mb-6 mt-1">
+              <img src="./bkkbn.png" alt="Logo KEMDIKBUD" />
             </div>
 
             <nav className="space-y-2">
@@ -253,7 +250,7 @@ export default function Chatbot(): JSX.Element {
               </a>
               <a
                 href="#"
-                className="block px-3 py-2 rounded-lg bg-white/20 text-black"
+                className="block px-3 py-2 rounded-lg bg-yellow-500 text-black"
               >
                 Konsultasi
               </a>
@@ -396,7 +393,6 @@ export default function Chatbot(): JSX.Element {
                 </button>
                 <h3 className="text-lg font-semibold">Chat dengan {persona}</h3>
               </div>
-
               <div className="flex-1 overflow-y-auto mb-4 border rounded-xl p-4 bg-gray-50 min-h-[300px]">
                 {messages.length === 0 ? (
                   <div className="text-center text-gray-500 py-8">
@@ -557,7 +553,7 @@ export default function Chatbot(): JSX.Element {
                       <path
                         className="opacity-75"
                         fill="currentColor"
-                        d="M4 12a8 8 极 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        d="M4 12a8 8 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       ></path>
                     </svg>
                   ) : (
