@@ -1,22 +1,134 @@
 [
   {
-    "question": "Bagaimana cara menjaga keamanan informasi?",
-    "answer": "Gunakan kata sandi yang kuat, aktifkan MFA, dan jangan membagikan kredensial ke siapapun."
-  },
-  {
-    "question": "Apa saja yang harus saya lakukan saat pertama kali masuk platform?",
-    "answer": "Lengkapi profil, baca panduan singkat, dan coba fitur konsultasi untuk mengenal sistem."
-  },
-  {
-    "question": "Saya lupa kata sandi, apa yang harus dilakukan?",
-    "answer": "Gunakan fitur Lupa Kata Sandi di halaman masuk, lalu ikuti instruksi email untuk reset."
-  },
-  {
-    "question": "Bagaimana menghubungi dukungan teknis?",
-    "answer": "Kirim tiket melalui menu Bantuan atau email ke support@contoh.go.id dengan deskripsi masalah."
-  },
-  {
     "question": "Apakah data saya aman?",
     "answer": "Kami menerapkan enkripsi saat transit & saat tersimpan, audit akses, dan pemantauan berkala."
+  },
+  {
+    "question": "Apa tujuan utama program BKKBN",
+    "answer": "Tujuan utama BKKBN adalah untuk meningkatkan kualitas hidup keluarga di Indonesia dengan mengendalikan laju pertumbuhan penduduk, mengedukasi masyarakat tentang pentingnya keluarga kecil yang sejahtera, dan meningkatkan kesejahteraan sosial-ekonomi keluarga."
+  },
+  {
+    "question": "Apa peran keluarga dalam edukasi kesehatan reproduksi?",
+    "answer": "Keluarga berperan sebagai sumber edukasi utama dengan memberikan informasi yang benar, terbuka, dan sesuai usia tentang kesehatan reproduksi.\r\n"
+  },
+  {
+    "question": "Siapa yang bisa mengikuti program Keluarga Berencana",
+    "answer": "Program Keluarga Berencana terbuka untuk seluruh pasangan suami istri (Pasutri) yang ingin mengatur jumlah anak dan merencanakan keluarga yang sehat dan sejahtera"
+  },
+  {
+    "question": "Apa saja jenis kontrasepsi yang disediakan oleh BKKBN",
+    "answer": "BKKBN menyediakan berbagai pilihan metode kontrasepsi, antara lain pil KB, suntik KB, IUD (Intrauterine Device), implan, kondom, dan sterilisasi. Pilihan ini dapat disesuaikan dengan kebutuhan dan kondisi kesehatan masing-masing individu"
+  },
+  {
+    "question": "Apakah BKKBN hanya fokus pada program KB",
+    "answer": "Tidak hanya fokus pada program KB, BKKBN juga melaksanakan program lainnya seperti peningkatan kesehatan ibu dan anak, pemberdayaan perempuan, pendidikan keluarga, serta penyuluhan terkait gizi dan kesehatan masyarakat"
+  },
+  {
+    "question": "Bagaimana cara mendaftar untuk mengikuti program Keluarga Berencana",
+    "answer": "Untuk mengikuti program KB, Anda dapat mengunjungi puskesmas terdekat, klinik KB, atau pusat layanan kesehatan yang bekerja sama dengan BKKBN. Petugas akan memberikan informasi tentang metode kontrasepsi yang sesuai dengan kebutuhan Anda"
+  },
+  {
+    "question": "Apa manfaat mengikuti program Keluarga Berencana",
+    "answer": "Manfaat mengikuti program KB antara lain membantu pasangan dalam merencanakan keluarga yang sehat, meningkatkan kualitas hidup keluarga, mengurangi resiko kesehatan bagi ibu dan anak, serta memberikan kesempatan bagi orang tua untuk memberikan perhatian dan pendidikan yang lebih baik kepada anak-anak"
+  },
+  {
+    "question": "Apakah program KB hanya berlaku di kota besar",
+    "answer": "Tidak, program KB yang dilaksanakan oleh BKKBN juga tersedia di daerah pedesaan dan pelosok Indonesia. BKKBN berusaha menjangkau seluruh masyarakat untuk memberikan akses terhadap layanan KB secara merata."
+  },
+  {
+    "question": "Bagaimana BKKBN mendukung pemberdayaan perempuan",
+    "answer": "BKKBN mendukung pemberdayaan perempuan melalui berbagai program yang melibatkan perempuan dalam pengambilan keputusan keluarga, peningkatan kualitas hidup, serta pemberian edukasi terkait kesehatan reproduksi dan perencanaan keluarga.\n\nJika Anda membutuhkan informasi lebih lanjut, Anda dapat mengunjungi situs resmi BKKBN atau menghubungi pusat layanan BKKBN setempat."
+  },
+  {
+    "question": "Apa itu stunting?",
+    "answer": "Stunting adalah kondisi gagal tumbuh pada anak balita akibat kekurangan gizi kronis, infeksi berulang, atau kurangnya stimulasi sejak 1.000 hari pertama kehidupan (HPK). Anak yang stunting biasanya memiliki tinggi badan lebih pendek dari standar usianya dan dapat mengalami hambatan perkembangan kognitif.\r\n"
+  },
+  {
+    "question": "Apa penyebab utama stunting?",
+    "answer": "\u003Cp\u003EPenyebab utama stunting meliputi:\u003C/p\u003E\r\n\u003Cul\u003E\r\n\u003Cli\u003EGizi buruk pada ibu hamil.\u003C/li\u003E\r\n\u003Cli\u003EPemberian ASI eksklusif yang tidak optimal.\u003C/li\u003E\r\n\u003Cli\u003EPola makan balita yang tidak bergizi.\u003C/li\u003E\r\n\u003Cli\u003ESanitasi buruk, seperti akses air bersih dan kebersihan lingkungan.\u003C/li\u003E\r\n\u003C/ul\u003E"
+  },
+  {
+    "question": "Bagaimana cara pencegahan stunting",
+    "answer": "\u003Cp\u003EStunting dapat dicegah dengan:\u003C/p\u003E\r\n\u003Cul\u003E\r\n\u003Cli\u003EMemastikan ibu hamil mendapatkan asupan gizi yang cukup.\u003C/li\u003E\r\n\u003Cli\u003EMemberikan ASI eksklusif selama 6 bulan pertama.\u003C/li\u003E\r\n\u003Cli\u003EMenyediakan makanan pendamping ASI yang bergizi seimbang.\u003C/li\u003E\r\n\u003Cli\u003EMenjaga kebersihan lingkungan dan pola hidup sehat.\u003C/li\u003E\r\n\u003C/ul\u003E"
+  },
+  {
+    "question": "Apa itu keluarga berencana",
+    "answer": "Keluarga berencana (KB) adalah suatu program yang bertujuan untuk membantu pasangan usia subur (PUS) dalam merencanakan jumlah dan jarak kelahiran anak, demi meningkatkan kualitas hidup keluarga. Program ini mencakup penggunaan alat kontrasepsi untuk menunda atau mengatur kelahiran."
+  },
+  {
+    "question": "Bagaimana cara memilih metode kontrasepsi yang tepat",
+    "answer": "Pemilihan metode kontrasepsi harus disesuaikan dengan kondisi kesehatan, preferensi pribadi, dan rekomendasi tenaga medis. Konsultasikan dengan dokter atau bidan di fasilitas kesehatan terdekat untuk memilih metode yang paling sesuai dengan kebutuhan Anda"
+  },
+  {
+    "question": "Apa tantangan utama Indonesia dalam bonus demografi?",
+    "answer": "\u003Cp\u003ETantangan utama meliputi:\u003C/p\u003E\r\n\u003Cul\u003E\r\n\u003Cli\u003ETingginya tingkat pengangguran pada usia produktif.\u003C/li\u003E\r\n\u003Cli\u003EKesenjangan kualitas pendidikan dan keterampilan.\u003C/li\u003E\r\n\u003Cli\u003EPenyebaran tenaga kerja yang tidak merata antar wilayah.\u003C/li\u003E\r\n\u003C/ul\u003E"
+  },
+  {
+    "question": "Bagaimana bonus demografi dapat dimanfaatkan secara optimal?",
+    "answer": "\u003Cp\u003EBonus demografi dapat dimanfaatkan dengan:\u003C/p\u003E\r\n\u003Cul\u003E\r\n\u003Cli\u003EPeningkatan akses pendidikan dan pelatihan vokasi.\u003C/li\u003E\r\n\u003Cli\u003EPengembangan wirausaha muda untuk menciptakan lapangan kerja.\u003C/li\u003E\r\n\u003Cli\u003EPerbaikan layanan kesehatan untuk menjaga produktivitas penduduk.\u003C/li\u003E\r\n\u003C/ul\u003E"
+  },
+  {
+    "question": "Apa yang dimaksud dengan pembangunan keluarga?",
+    "answer": "Pembangunan keluarga adalah upaya meningkatkan kualitas hidup keluarga melalui pembinaan kesejahteraan fisik, mental, sosial, dan spiritual agar menjadi keluarga yang mandiri dan berkualitas."
+  },
+  {
+    "question": "Apa saja program prioritas dalam pembangunan keluarga?",
+    "answer": "<p>Program prioritas meliputi:</p><ul><li><strong>Keluarga</strong> <strong>Berencana</strong><strong> (KB):</strong> Mengatur jarak kelahiran untuk meningkatkan kesehatan ibu dan anak.</li><li><strong>Pendidikan </strong><strong>Keluarga</strong><strong>:</strong> Memberikan edukasi tentang pola asuh dan nilai-nilai kehidupan.</li><li><strong>Ekonomi </strong><strong>Keluarga</strong><strong>:</strong> Meningkatkan keterampilan kerja atau usaha bagi keluarga kurang mampu.</li></ul>"
+  },
+  {
+    "question": "Mengapa kesehatan reproduksi penting bagi remaja?",
+    "answer": "Kesehatan reproduksi penting agar remaja memahami tubuhnya, mencegah pernikahan dini, dan menghindari risiko penyakit menular seksual serta kehamilan yang tidak direncanakan."
+  },
+  {
+    "question": "Apa peran keluarga dalam edukasi kesehatan reproduksi?",
+    "answer": "Keluarga berperan sebagai sumber edukasi utama dengan memberikan informasi yang benar, terbuka, dan sesuai usia tentang kesehatan reproduksi."
+  },
+  {
+    "question": "Apa yang dimaksud dengan tumbuh kembang anak",
+    "answer": "Tumbuh kembang anak adalah proses di mana seorang anak mengalami pertumbuhan fisik (tinggi, berat, ukuran organ) dan perkembangan kemampuan (motorik, kognitif, bahasa, emosional, dan sosial) yang berlangsung sejak lahir hingga dewasa."
+  },
+  {
+    "question": "Apa saja faktor yang memengaruhi tumbuh kembang anak",
+    "answer": "Genetik: Warisan sifat dari orang tua, termasuk tinggi badan dan kecerdasan. Gizi: Asupan makanan bergizi selama masa pertumbuhan. Kesehatan: Imunisasi, pencegahan penyakit, dan penanganan infeksi. Lingkungan: Keluarga, stimulasi psikologis, dan sosial. Kasih sayang dan perhatian: Kehadiran dan pola asuh orang tua."
+  },
+  {
+    "question": "Apa saja tahap perkembangan anak",
+    "answer": "Bayi (0-12 bulan): Merangkak, mengoceh, mengenali suara orang tua. Balita (1-3 tahun): Berjalan, berbicara kata-kata sederhana, mulai belajar mandiri. Pra-sekolah (3-6 tahun): Meningkatkan kemampuan motorik halus dan kasar, berbicara kalimat panjang, bermain dengan teman sebaya. Usia sekolah (6-12 tahun): Perkembangan kognitif lebih kompleks, belajar keterampilan sosial, dan pemahaman emosional. Remaja (12-18 tahun): Perubahan fisik signifikan, pencarian identitas diri, dan kemampuan berpikir abstrak."
+  },
+  {
+    "question": "Apa yang dimaksud dengan milestone tumbuh kembang",
+    "answer": "Milestone adalah tonggak perkembangan yang menunjukkan pencapaian tertentu dalam pertumbuhan dan kemampuan anak, seperti mulai merangkak, berbicara, atau berjalan. Milestone membantu memantau apakah anak berkembang sesuai usia."
+  },
+  {
+    "question": "Apa tanda-tanda tumbuh kembang anak yang normal?",
+    "answer": "Pertumbuhan berat dan tinggi badan sesuai grafik pertumbuhan. Kemampuan anak dalam bergerak, berbicara, dan bersosialisasi sesuai usia. Anak terlihat aktif, sehat, dan responsif terhadap lingkungan sekitar."
+  },
+  {
+    "question": "Apa saja tanda keterlambatan tumbuh kembang?",
+    "answer": "Anak tidak mencapai milestone perkembangan pada waktunya (contoh: belum bisa berjalan di usia 18 bulan). Kesulitan berbicara atau memahami bahasa. Kurangnya interaksi sosial atau respons terhadap lingkungan. Pertumbuhan fisik yang lambat atau stagnan."
+  },
+  {
+    "question": "Apa yang harus dilakukan jika anak mengalami keterlambatan tumbuh kembang?",
+    "answer": "Konsultasikan ke dokter anak atau spesialis tumbuh kembang. Lakukan pemeriksaan medis untuk mengetahui penyebabnya. Berikan stimulasi tambahan sesuai kebutuhan anak. Terapkan pola makan bergizi dan pola asuh yang mendukung."
+  },
+  {
+    "question": "Bagaimana cara mendukung tumbuh kembang anak secara optimal",
+    "answer": "Berikan ASI eksklusif selama 6 bulan pertama, dilanjutkan dengan makanan bergizi. Lakukan imunisasi sesuai jadwal. Berikan waktu bermain yang cukup untuk melatih motorik dan kreativitas. Berikan stimulasi sesuai usia, seperti membaca cerita, bermain, atau bercakap-cakap. Berikan kasih sayang dan perhatian secara konsisten"
+  },
+  {
+    "question": "Apakah semua anak berkembang dengan kecepatan yang sama",
+    "answer": "Tidak, setiap anak memiliki kecepatan tumbuh kembang yang berbeda. Namun, mereka tetap harus berada dalam rentang normal sesuai usia. Jika perbedaannya signifikan, penting untuk berkonsultasi dengan ahli"
+  },
+  {
+    "question": "Bagaimana peran orang tua dalam tumbuh kembang anak?",
+    "answer": "Orang tua berperan sebagai pendukung utama dengan: Memberikan kebutuhan dasar seperti nutrisi, kesehatan, dan keamanan. Memberikan kasih sayang dan perhatian emosional. Menjadi contoh perilaku positif dalam kehidupan sehari-hari. Memberikan kesempatan anak untuk belajar, bereksplorasi, dan bersosialisasi."
+  },
+  {
+    "question": "Alamat bkkbn",
+    "answer": "Jalan Permata no. 1, Halim Perdanakusuma - Jakarta Timur, Provinsi DKI Jakarta"
+  },
+  {
+    "question": "Jam Pelayanan BKKBN",
+    "answer": "Hari Senin - Kamis, pukul 07.30 - 16.00 WIB dan Hari Jumat, pukul 07.30 - 16.30 WIB"
   }
 ]

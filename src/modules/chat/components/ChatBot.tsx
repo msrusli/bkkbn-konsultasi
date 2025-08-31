@@ -51,11 +51,12 @@ export default function Chatbot(): JSX.Element {
   const [input, setInput] = useState("");
   const [chatHistory, setChatHistory] = useState<ChatHistoryItem[]>([]);
   const [activeChatId, setActiveChatId] = useState<number | null>(null);
+  const [isTyping, setIsTyping] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, isTyping]);
 
   // Fungsi untuk menangani like/dislike
   const handleReaction = (messageId: string, reaction: "like" | "dislike") => {
@@ -100,6 +101,7 @@ export default function Chatbot(): JSX.Element {
     setMessages([]);
     setInput("");
     setActiveChatId(null);
+    setIsTyping(false);
   };
 
   // Fungsi untuk memuat chat history
@@ -109,6 +111,7 @@ export default function Chatbot(): JSX.Element {
       setPersona(chat.persona);
       setMessages(chat.messages);
       setActiveChatId(chatId);
+      setIsTyping(false);
     }
   };
 
@@ -147,8 +150,12 @@ export default function Chatbot(): JSX.Element {
       timestamp: getCurrentTime(),
     };
 
+    // Tampilkan efek typing
+    setIsTyping(true);
+
     setTimeout(() => {
       setMessages((prev) => [...prev, botMsg]);
+      setIsTyping(false);
 
       // Update chat history jika ini adalah chat yang sedang aktif
       if (activeChatId) {
@@ -167,7 +174,7 @@ export default function Chatbot(): JSX.Element {
           )
         );
       }
-    }, 500);
+    }, 1500); // Delay untuk simulasi typing
 
     setInput("");
   };
@@ -188,7 +195,6 @@ export default function Chatbot(): JSX.Element {
       messages: [],
       persona: "Kina",
     },
-
     {
       id: 5,
       title: "Cara menyelesaikan konflik",
@@ -421,10 +427,10 @@ export default function Chatbot(): JSX.Element {
                             </div>
                           )}
                           <div
-                            className={`px-3 py-2 rounded-lg ${
+                            className={`px-4 py-3 rounded-2xl ${
                               m.from === "user"
-                                ? "bg-blue-500 text-white rounded-br-none"
-                                : "bg-gray-200 text-gray-800 rounded-bl-none"
+                                ? "bg-blue-500 text-white rounded-br-md"
+                                : "bg-white text-gray-800 border border-gray-200 rounded-bl-md shadow-sm"
                             }`}
                           >
                             {m.text}
@@ -443,47 +449,45 @@ export default function Chatbot(): JSX.Element {
                             <div className="flex gap-1">
                               <button
                                 onClick={() => handleReaction(m.id, "like")}
-                                className={`p-1 rounded-full ${
+                                className={`p-1 rounded-full transition-colors ${
                                   m.liked
                                     ? "bg-green-100 text-green-600"
-                                    : "text-gray-400 hover:text-green-500"
+                                    : "text-gray-400 hover:text-green-500 hover:bg-green-50"
                                 }`}
+                                title="Suka jawaban ini"
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   className="h-4 w-4"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
                                 >
                                   <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905a3.61 3.61 0 01-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+                                    fillRule="evenodd"
+                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                    clipRule="evenodd"
                                   />
                                 </svg>
                               </button>
                               <button
                                 onClick={() => handleReaction(m.id, "dislike")}
-                                className={`p-1 rounded-full ${
+                                className={`p-1 rounded-full transition-colors ${
                                   m.disliked
                                     ? "bg-red-100 text-red-600"
-                                    : "text-gray-400 hover:text-red-500"
+                                    : "text-gray-400 hover:text-red-500 hover:bg-red-50"
                                 }`}
+                                title="Tidak suka jawaban ini"
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   className="h-4 w-4"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
                                 >
                                   <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M10 14H5.236a2 2 极 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018c.163 0 .326.02.485.06L17 4m0 0v9m0-9h2.765a2 2 0 011.789 2.894l-3.5 7A2 2 0 0118.264 15H14m-4 0h-2M7 10h2"
+                                    fillRule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                                    clipRule="evenodd"
                                   />
                                 </svg>
                               </button>
@@ -494,6 +498,29 @@ export default function Chatbot(): JSX.Element {
                     </div>
                   ))
                 )}
+
+                {/* Typing Indicator */}
+                {isTyping && (
+                  <div className="flex mb-4 justify-start">
+                    <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white flex-shrink-0 mr-2">
+                      {persona === "Bina" ? "B" : "K"}
+                    </div>
+                    <div className="px-4 py-3 rounded-2xl bg-white border border-gray-200 rounded-bl-md shadow-sm">
+                      <div className="flex space-x-1.5">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                        <div
+                          className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                          style={{ animationDelay: "0.2s" }}
+                        ></div>
+                        <div
+                          className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                          style={{ animationDelay: "0.4s" }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div ref={bottomRef}></div>
               </div>
 
@@ -505,13 +532,37 @@ export default function Chatbot(): JSX.Element {
                   onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                   placeholder={`Tanyakan sesuatu ke ${persona}...`}
                   className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  disabled={isTyping}
                 />
                 <button
                   onClick={sendMessage}
-                  disabled={!input.trim()}
+                  disabled={!input.trim() || isTyping}
                   className="px-4 py-3 bg-green-500 hover:bg-green-600 disabled:bg-gray-400 text-white rounded-lg transition-colors"
                 >
-                  Kirim
+                  {isTyping ? (
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 极 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                  ) : (
+                    "Kirim"
+                  )}
                 </button>
               </div>
             </>
