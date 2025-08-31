@@ -10,6 +10,7 @@ interface Message {
   timestamp: string;
   liked?: boolean;
   disliked?: boolean;
+  containsHTML?: boolean;
 }
 
 // Interface untuk chat history
@@ -45,6 +46,11 @@ const getCurrentTime = () => {
   });
 };
 
+// Fungsi untuk mendeteksi HTML
+const containsHTML = (text: string): boolean => {
+  return /<[a-z][\s\S]*>/i.test(text);
+};
+
 export default function Chatbot(): JSX.Element {
   const [persona, setPersona] = useState<Persona | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -52,11 +58,57 @@ export default function Chatbot(): JSX.Element {
   const [chatHistory, setChatHistory] = useState<ChatHistoryItem[]>([]);
   const [activeChatId, setActiveChatId] = useState<number | null>(null);
   const [isTyping, setIsTyping] = useState(false);
+  const [isListening, setIsListening] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<any>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
+
+  // Inisialisasi Speech Recognition
+  useEffect(() => {
+    if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
+      const SpeechRecognition =
+        (window as any).webkitSpeechRecognition ||
+        (window as any).SpeechRecognition;
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.continuous = false;
+      recognitionRef.current.interimResults = false;
+      recognitionRef.current.lang = "id-ID"; // Bahasa Indonesia
+
+      recognitionRef.current.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        setInput((prev) => prev + transcript);
+        setIsListening(false);
+      };
+
+      recognitionRef.current.onerror = (event: any) => {
+        console.error("Speech recognition error:", event.error);
+        setIsListening(false);
+      };
+
+      recognitionRef.current.onend = () => {
+        setIsListening(false);
+      };
+    }
+  }, []);
+
+  // Fungsi untuk memulai/penghentian voice typing
+  const toggleVoiceTyping = () => {
+    if (isListening) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+    } else {
+      try {
+        recognitionRef.current.start();
+        setIsListening(true);
+      } catch (error) {
+        console.error("Error starting voice recognition:", error);
+        setIsListening(false);
+      }
+    }
+  };
 
   // Fungsi untuk menangani like/dislike
   const handleReaction = (messageId: string, reaction: "like" | "dislike") => {
@@ -77,7 +129,6 @@ export default function Chatbot(): JSX.Element {
   // Fungsi untuk memulai chat baru
   const startNewChat = () => {
     if (persona && messages.length > 0) {
-      // Simpan chat sebelumnya ke history
       const newChat: ChatHistoryItem = {
         id: Date.now(),
         title:
@@ -90,18 +141,17 @@ export default function Chatbot(): JSX.Element {
       };
 
       setChatHistory((prev) => {
-        // Hapus chat sebelumnya dengan ID yang sama jika ada (untuk update)
         const filteredHistory = prev.filter((chat) => chat.id !== newChat.id);
         return [newChat, ...filteredHistory];
       });
     }
 
-    // Reset state untuk chat baru
     setPersona(null);
     setMessages([]);
     setInput("");
     setActiveChatId(null);
     setIsTyping(false);
+    setIsListening(false);
   };
 
   // Fungsi untuk memuat chat history
@@ -112,6 +162,7 @@ export default function Chatbot(): JSX.Element {
       setMessages(chat.messages);
       setActiveChatId(chatId);
       setIsTyping(false);
+      setIsListening(false);
     }
   };
 
@@ -126,12 +177,10 @@ export default function Chatbot(): JSX.Element {
     };
     setMessages((prev) => [...prev, userMsg]);
 
-    // fuzzy match dari chatbot.json
     const lower = input.toLowerCase();
     let bestAnswer = "Maaf, saya belum punya jawaban untuk itu.";
     let highest = 0;
 
-    // Menggunakan data dari file JSON
     chatData.forEach((qa: { question: string; answer: string }) => {
       const score = similarity(lower, qa.question.toLowerCase());
       if (score > highest) {
@@ -139,6 +188,8 @@ export default function Chatbot(): JSX.Element {
         bestAnswer = qa.answer;
       }
     });
+
+    const hasHTML = containsHTML(bestAnswer);
 
     const botMsg: Message = {
       id: crypto.randomUUID(),
@@ -148,16 +199,15 @@ export default function Chatbot(): JSX.Element {
           ? bestAnswer
           : "Maaf, saya belum punya jawaban untuk itu.",
       timestamp: getCurrentTime(),
+      containsHTML: highest > 0.3 && hasHTML,
     };
 
-    // Tampilkan efek typing
     setIsTyping(true);
 
     setTimeout(() => {
       setMessages((prev) => [...prev, botMsg]);
       setIsTyping(false);
 
-      // Update chat history jika ini adalah chat yang sedang aktif
       if (activeChatId) {
         setChatHistory((prev) =>
           prev.map((chat) =>
@@ -174,12 +224,25 @@ export default function Chatbot(): JSX.Element {
           )
         );
       }
-    }, 1500); // Delay untuk simulasi typing
+    }, 1500);
 
     setInput("");
   };
 
-  // Data history chat (contoh)
+  // Komponen untuk merender pesan
+  const MessageContent = ({ message }: { message: Message }) => {
+    if (message.containsHTML) {
+      return (
+        <div
+          className="message-html-content"
+          dangerouslySetInnerHTML={{ __html: message.text }}
+        />
+      );
+    }
+    return <div className="message-text-content">{message.text}</div>;
+  };
+
+  // Data history chat
   const sampleChatHistory: ChatHistoryItem[] = [
     {
       id: 1,
@@ -218,10 +281,8 @@ export default function Chatbot(): JSX.Element {
     },
   ];
 
-  // Gabungkan history dari state dengan sample data
   const allChatHistory = [...chatHistory, ...sampleChatHistory];
 
-  // Kelompokkan history berdasarkan waktu
   const groupChatsByTime = () => {
     const groups: { [key: string]: typeof allChatHistory } = {};
     allChatHistory.forEach((chat) => {
@@ -310,7 +371,7 @@ export default function Chatbot(): JSX.Element {
           </div>
         </aside>
 
-        {/* Chat List (history) */}
+        {/* Chat List */}
         <section className="w-80 bg-white shadow-lg p-4 overflow-y-auto">
           <button
             onClick={startNewChat}
@@ -355,7 +416,7 @@ export default function Chatbot(): JSX.Element {
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.63.42 3.2.98 4.6l-1.05 3.86 3.93-1.03c1.39.76 2.97 1.15 4.6 1.15 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm3.87 11.2a1.07 1.07 0 01-.25.86c-.08.1-.47.56-.66.68-.2.12-.39.18-.56.23-.19.05-.38.03-.58-.1-.19-.15-.76-.84-.91-.98-.15-.15-.3-.21-.5-.07-.19.15-.49.5-.66.68-.17.18-.34.25-.52.25-.19 0-1.15-.44-2.18-1.35-1.5-1.32-2.5-2.92-2.8-3.4-.3-.49-.03-.76.1-.88.1-.1.25-.2.34-.33.09-.12.19-.3.26-.45.07-.15.03-.28-.01-.39-.04-.1-.38-.93-.52-1.27-.14-.35-.29-.29-.49-.29-.19 0-.41-.03-.6-.03-.19 0-.52.12-.76.34-.23.23-.88.86-.88 2.09 0 1.23.9 2.4 1.03 2.58.14.18 1.77 2.66 4.29 3.73 2.06.87 2.45.69 2.9 1.1.4.38.64.64.84.81.2.19.15.25.1.41-.05.15-.35.5-.6.64-.25.15-.49.23-.6.3-.12.08-.24.16-.36.25l-.26.2c-.1.08-.23.15-.34.23z" />
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.63.42 3.2.98 4.6l-1.05 3.86 3.93-1.03c1.39.76 2.97 1.15 4.6 1.15 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm3.87 11.2a1.07 1.07 0 01-.25.86c-.08.1-.47.56-.66.68-.2.12-.39.18-.56.23-.19.05-.38.03-.58-.1-.19-.15-.76-.84-.91-.98-.15-.15-.3-.21-.5-.07-.19.15-.49.5-.66.68-.17.18-.34.25-.52.25-.19 0-1.15-.44-2.18-1.35-1.5-1.32-2.5-2.92-2.8-3.4-.3-.49-.03-.76.1-.88.1-.1.25-.2.34-.33.09-.12.19-.3.26-.45.07-.15.03-.28-.01-.39-.04-.1-.38-.93-.52-1.27-.14-.35-.29-.29-.49-.29-.19 0-.41-.03-.6-.03-.19 0-.52.12-.76.34-.23.23-.88.86-.88 2.09 0 1.23.9 2.4 1.03 2.58.14.18 1.77 2.66 4.29 3.73 2.06.87 2.45.69 2.9 1.1.4.38.64.64.84.81.2.19.15.25.1.41-.05.15-.35.5-.6.64-.25.15-.49.23-.6.3-.12.08-.24.16-.36.25l-.26.2c-.10.08-.23.15-.34.23z" />
               </svg>
               Sahabat Konsultasi Anda!
             </a>
@@ -436,8 +497,8 @@ export default function Chatbot(): JSX.Element {
                     <p>Mulai percakapan dengan {persona}</p>
                     <p className="text-sm mt-2">
                       {persona === "Bina"
-                        ? "Saya siap membantu semua tentang pendidikan"
-                        : "Saya siap membantu mewujudkan keluarga tangguh"}
+                        ? "Hai, saya Bina! Siap bantu jawab semua tentang pra-nikah"
+                        : " Hai, saya Kina! Siap bantu wujudkan keluarga langgeng"}
                     </p>
                   </div>
                 ) : (
@@ -449,7 +510,7 @@ export default function Chatbot(): JSX.Element {
                       }`}
                     >
                       <div
-                        className={`max-w-xs ${
+                        className={`max-w-3xl ${
                           m.from === "user" ? "ml-auto" : ""
                         }`}
                       >
@@ -466,7 +527,7 @@ export default function Chatbot(): JSX.Element {
                                 : "bg-white text-gray-800 border border-gray-200 rounded-bl-md shadow-sm"
                             }`}
                           >
-                            {m.text}
+                            <MessageContent message={m} />
                           </div>
                         </div>
                         <div
@@ -557,7 +618,7 @@ export default function Chatbot(): JSX.Element {
                 <div ref={bottomRef}></div>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <input
                   type="text"
                   value={input}
@@ -567,6 +628,47 @@ export default function Chatbot(): JSX.Element {
                   className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   disabled={isTyping}
                 />
+
+                {/* Tombol Voice Typing */}
+                <button
+                  onClick={toggleVoiceTyping}
+                  disabled={isTyping}
+                  className={`p-3 rounded-lg transition-colors ${
+                    isListening
+                      ? "bg-red-500 hover:bg-red-600 text-white"
+                      : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                  }`}
+                  title={
+                    isListening ? "Hentikan voice typing" : "Mulai voice typing"
+                  }
+                >
+                  {isListening ? (
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  )}
+                </button>
+
                 <button
                   onClick={sendMessage}
                   disabled={!input.trim() || isTyping}
