@@ -209,6 +209,13 @@ export default function Chatbot(): JSX.Element {
       messages: [],
       persona: "Kina",
     },
+    {
+      id: 7,
+      title: "Apakah Program KB Berlaku",
+      time: "7 hari yang lalu",
+      messages: [],
+      persona: "Kina",
+    },
   ];
 
   // Gabungkan history dari state dengan sample data
@@ -335,27 +342,56 @@ export default function Chatbot(): JSX.Element {
               </ul>
             </div>
           ))}
+          <div className="text-sm mt-20">
+            <a
+              href="https://wa.me/081252000540"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center mt-4 w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-lg transition-colors"
+            >
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.63.42 3.2.98 4.6l-1.05 3.86 3.93-1.03c1.39.76 2.97 1.15 4.6 1.15 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm3.87 11.2a1.07 1.07 0 01-.25.86c-.08.1-.47.56-.66.68-.2.12-.39.18-.56.23-.19.05-.38.03-.58-.1-.19-.15-.76-.84-.91-.98-.15-.15-.3-.21-.5-.07-.19.15-.49.5-.66.68-.17.18-.34.25-.52.25-.19 0-1.15-.44-2.18-1.35-1.5-1.32-2.5-2.92-2.8-3.4-.3-.49-.03-.76.1-.88.1-.1.25-.2.34-.33.09-.12.19-.3.26-.45.07-.15.03-.28-.01-.39-.04-.1-.38-.93-.52-1.27-.14-.35-.29-.29-.49-.29-.19 0-.41-.03-.6-.03-.19 0-.52.12-.76.34-.23.23-.88.86-.88 2.09 0 1.23.9 2.4 1.03 2.58.14.18 1.77 2.66 4.29 3.73 2.06.87 2.45.69 2.9 1.1.4.38.64.64.84.81.2.19.15.25.1.41-.05.15-.35.5-.6.64-.25.15-.49.23-.6.3-.12.08-.24.16-.36.25l-.26.2c-.1.08-.23.15-.34.23z" />
+              </svg>
+              Sahabat Konsultasi Anda!
+            </a>
+          </div>
         </section>
 
         {/* Chat Panel */}
         <main className="flex-1 bg-white shadow-lg p-6 flex flex-col">
           {!persona ? (
             <>
-              <header className="mb-6">
-                <h2 className="text-xl font-bold">Chatbot AI</h2>
-                <p className="text-sm text-gray-500">
+              <header className="mb-6 ">
+                <div className="flex items-center justify-center gap-3 mb-6 mt-6 ">
+                  <img src="./chatbot.png" alt="Logo KEMDIKBUD" />
+                </div>
+                <p
+                  className="text-sm text-gray-500 text-center font-semibold"
+                  style={{ fontSize: "18px" }}
+                >
                   Siapa yang ingin Anda temui hari ini?
+                </p>
+                <p
+                  className="text-sm text-gray-500 text-center font-semibold"
+                  style={{ fontSize: "18px" }}
+                >
+                  Pilih pendamping virtual yang sesuai dengan preferensi Anda:
                 </p>
               </header>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div className="border rounded-xl p-4 flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                  <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center">
-                    <span className="text-2xl">👨‍🎓</span>
+                  <div className="flex items-center gap-3 mb-6  w-24 h-24 mt-6 ">
+                    <img src="./bina.png" alt="Logo KEMDIKBUD" />
                   </div>
                   <h4 className="font-semibold">Bina</h4>
                   <p className="text-sm text-gray-500">
-                    Hai, saya Bina! Siap bantu jawab semua tentang pendidikan 👨‍🎓
+                    Hai, saya Bina! Siap bantu jawab semua tentang pra-nikah
                   </p>
                   <button
                     onClick={() => setPersona("Bina")}
@@ -366,12 +402,13 @@ export default function Chatbot(): JSX.Element {
                 </div>
 
                 <div className="border rounded-xl p-4 flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                  <div className="w-20 h-20 bg-pink-100 rounded-full mb-3 flex items-center justify-center">
-                    <span className="text-2xl">👩‍👩‍👧‍👦</span>
+                  <div className="flex items-center gap-3 mb-6  w-24 h-24 mt-6 ">
+                    <img src="./kina.png" alt="Logo KEMDIKBUD" />
                   </div>
+
                   <h4 className="font-semibold">Kina</h4>
                   <p className="text-sm text-gray-500">
-                    Hai, saya Kina! Siap bantu wujudkan keluarga tangguh 👩‍👩‍👧‍👦
+                    Hai, saya Kina! Siap bantu wujudkan keluarga langgeng
                   </p>
                   <button
                     onClick={() => setPersona("Kina")}
