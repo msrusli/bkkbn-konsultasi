@@ -405,7 +405,7 @@ export default function Chatbot(): JSX.Element {
           ))}
           <div className="text-sm mt-20">
             <a
-              href="https://wa.me/081252000540"
+              href="https://wa.me/6281252000540"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 mt-4 w-full 
