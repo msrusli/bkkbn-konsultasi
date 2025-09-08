@@ -311,7 +311,7 @@
 
 //             <nav className="space-y-2">
 //               <a
-//                 href="https://prototypebkkbn.framer.website/dashboard-beranda"
+//                 href="https://underdev-superapps.framer.website/dashboard-beranda"
 //                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
 //               >
 //                 Beranda
@@ -323,31 +323,31 @@
 //                 Konsultasi
 //               </a>
 //               <a
-//                 href="https://prototypebkkbn.framer.website/dashboard-ecourse-siap-manten"
+//                 href="https://underdev-superapps.framer.website/dashboard-ecourse-siap-manten"
 //                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
 //               >
 //                 E-Course
 //               </a>
 //               <a
-//                 href="https://prototypebkkbn.framer.website/dashboard-bisik"
+//                 href="https://underdev-superapps.framer.website/dashboard-bisik"
 //                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
 //               >
 //                 Bisik Forum
 //               </a>
 //               <a
-//                 href="https://prototypebkkbn.framer.website/dashboard-event-tersedia"
+//                 href="https://underdev-superapps.framer.website/dashboard-event-tersedia"
 //                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
 //               >
 //                 Event
 //               </a>
 //               <a
-//                 href="https://prototypebkkbn.framer.website/dashboard-news"
+//                 href="https://underdev-superapps.framer.website/dashboard-news"
 //                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
 //               >
 //                 Berita Terkini
 //               </a>
 //               <a
-//                 href="https://prototypebkkbn.framer.website/dashboard-setting-detail"
+//                 href="https://underdev-superapps.framer.website/dashboard-setting-detail"
 //                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
 //               >
 //                 Pengaturan
@@ -1098,7 +1098,7 @@ export default function Chatbot(): JSX.Element {
 
             <nav className="space-y-2">
               <a
-                href="https://prototypebkkbn.framer.website/dashboard-beranda"
+                href="https://underdev-superapps.framer.website/dashboard-beranda"
                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
               >
                 Beranda
@@ -1110,31 +1110,49 @@ export default function Chatbot(): JSX.Element {
                 Konsultasi
               </a>
               <a
-                href="https://prototypebkkbn.framer.website/dashboard-ecourse-siap-manten"
+                href="#"
+                className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
+              >
+                Metaverse
+              </a>
+              <a
+                href="https://underdev-superapps.framer.website/dashboard-ecourse-siap-manten"
                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
               >
                 E-Course
               </a>
               <a
-                href="https://prototypebkkbn.framer.website/dashboard-bisik"
+                href="https://underdev-superapps.framer.website/dashboard-bisik"
                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
               >
                 Bisik Forum
               </a>
               <a
-                href="https://prototypebkkbn.framer.website/dashboard-event-tersedia"
+                href="https://underdev-superapps.framer.website/dashboard-bisik"
+                className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
+              >
+                Podcast
+              </a>
+              <a
+                href="https://underdev-superapps.framer.website/dashboard-event-tersedia"
                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
               >
                 Event
               </a>
               <a
-                href="https://prototypebkkbn.framer.website/dashboard-news"
+                href="https://underdev-superapps.framer.website/dashboard-news"
                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
               >
                 Berita Terkini
               </a>
               <a
-                href="https://prototypebkkbn.framer.website/dashboard-setting-detail"
+                href="https://underdev-superapps.framer.website/dashboard-news"
+                className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
+              >
+                Artikel Interaktif
+              </a>
+              <a
+                href="https://underdev-superapps.framer.website/dashboard-setting-detail"
                 className="block px-3 py-2 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
               >
                 Pengaturan
