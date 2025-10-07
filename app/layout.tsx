@@ -1,4 +1,5 @@
 import "./globals.css";
+
 export const metadata = { title: "Konsultasi AI" };
 
 export default function RootLayout({
