@@ -4050,7 +4050,7 @@ export default function Chatbot(): JSX.Element {
   const recognitionRef = useRef<any>(null);
   const typingIntervalsRef = useRef<{ [key: string]: NodeJS.Timeout }>({});
   const token =
-    "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1ydXNsaUBia2tibi5jb20iLCJnaXZlbl9uYW1lIjoibXJ1c2xpIiwicm9sZSI6IlN1cGVyIEFkbWluIiwibmJmIjoxNzU5ODg4MDg1LCJleHAiOjE3NjA0OTI4ODUsImlhdCI6MTc1OTg4ODA4NSwiaXNzIjoiQktLQk4tSXNzdWVyIiwiYXVkIjoiQktLQk4tQXVkaWVuY2UifQ.4iPsMYnTfQFgDyYVSY5BZXPqGZt6uIwQxxas9Pd3wost79qUk2eiP6p7uLYqIQOpNSjIV2Vp7H01hnc9Rq-ecA";
+    "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1ydXNsaUBia2tibi5jb20iLCJnaXZlbl9uYW1lIjoibXJ1c2xpIiwicm9sZSI6IlN1cGVyIEFkbWluIiwibmJmIjoxNzYwNTcyOTU4LCJleHAiOjE3NjExNzc3NTgsImlhdCI6MTc2MDU3Mjk1OCwiaXNzIjoiQktLQk4tSXNzdWVyIiwiYXVkIjoiQktLQk4tQXVkaWVuY2UifQ.lLBwxrEzmwzUVnv8GazEbIR0ED716QzioCbcpWX2n8wmTxHyqJmoxYX6L4H6doX9rYFOstHrk8SvOQ_qAyYaVQ";
 
   // Effect untuk auto-scroll dan inisialisasi speech recognition
   useEffect(() => {
